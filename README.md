@@ -1,8 +1,8 @@
 <p align="left">
-  <a>Locked</a>
+  <a>Buzz-1</a>
  </p>
 <p align="center" style="font-weight:bolder;font-size:50px">
-<center><h1 align="center" >Demorepo</h1></center>
+<center><h1 align="center">LOCKED</h1></center>
 </p>
 
 <p align="center">
